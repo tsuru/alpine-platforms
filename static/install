@@ -1,0 +1,11 @@
+#!/bin/sh -e
+
+SOURCE_DIR=/var/lib/tsuru
+source ${SOURCE_DIR}/base/rc/config
+
+apk update
+apk add nginx
+
+cp ${SOURCE_DIR}/static/Procfile ${SOURCE_DIR}/default/Procfile
+cp ${SOURCE_DIR}/static/etc/nginx.conf /etc/nginx/nginx.conf
+echo "sudo chmod 777 /dev/stdout" >> /etc/profile
