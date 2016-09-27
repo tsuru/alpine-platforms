@@ -1,0 +1,16 @@
+#!/bin/bash -el
+
+SOURCE_DIR=/var/lib/tsuru
+source ${SOURCE_DIR}/base/deploy
+source ${SOURCE_DIR}/base/rc/config
+
+APP_VENV=/home/application/.app_env
+
+pushd $CURRENT_DIR
+echo_debug "*** $0: About to do pip install (pwd: $(pwd))"
+if [ -f ${CURRENT_DIR}/requirements.txt ]; then
+	${APP_VENV}/bin/pip install -r ${CURRENT_DIR}/requirements.txt
+elif [ -f ${CURRENT_DIR}/setup.py ]; then
+	${APP_VENV}/bin/pip install -e ${CURRENT_DIR}/
+fi
+popd
