@@ -1,0 +1,16 @@
+#!/bin/bash -e
+
+APP_VENV=/home/application/.app_env
+
+SOURCE_DIR=/var/lib/tsuru
+source ${SOURCE_DIR}/base/rc/config
+
+apk add python
+apk add --update python python-dev py-pip build-base
+pip install virtualenv
+
+virtualenv $APP_VENV
+$APP_VENV/bin/pip install --upgrade pip distribute
+echo "export PATH=${APP_VENV}/bin:\${PATH}" | tee -a ${HOME}/.profile /etc/profile >/dev/null
+echo "Defaults secure_path=\"${APP_VENV}/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\"" > /etc/sudoers.d/venv
+chown -R ${USER}:${USER} ${APP_VENV}
