@@ -6,8 +6,6 @@ source ${SOURCE_DIR}/base/rc/config
 apk update
 apk add nginx
 
-rm -rf /var/log/nginx /var/lib/nginx
-mkdir -p /var/log/nginx /var/lib/nginx
 chown -R ${USER}:${USER} /var/lib/nginx /var/log/nginx
 
 cp ${SOURCE_DIR}/static/Procfile ${SOURCE_DIR}/default/Procfile
