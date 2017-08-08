@@ -7,7 +7,7 @@ source ${SOURCE_DIR}/base/rc/config
 curl -sL https://raw.githubusercontent.com/travis-ci/gimme/master/gimme -o /usr/bin/gimme
 chmod +x /usr/bin/gimme
 
-apk add bzr mercurial git go
+apk add --no-cache bzr mercurial git go gcc musl-dev
 
 cp ${SOURCE_DIR}/go/Procfile ${SOURCE_DIR}/default/Procfile
 
