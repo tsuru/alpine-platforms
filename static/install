@@ -3,8 +3,7 @@
 SOURCE_DIR=/var/lib/tsuru
 source ${SOURCE_DIR}/base/rc/config
 
-apk update
-apk add nginx
+apk add --update --no-cache nginx
 
 chown -R ${USER}:${USER} /var/lib/nginx /var/log/nginx
 
