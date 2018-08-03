@@ -5,8 +5,7 @@ APP_VENV=/home/application/.app_env
 SOURCE_DIR=/var/lib/tsuru
 source ${SOURCE_DIR}/base/rc/config
 
-apk add python
-apk add --update python python-dev py-pip build-base
+apk add --update --no-cache python python-dev py-pip build-base
 pip install virtualenv
 
 virtualenv $APP_VENV
